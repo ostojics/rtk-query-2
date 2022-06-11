@@ -1,4 +1,5 @@
 import {apiSlice} from 'features/api/apiSlice';
+import {CreateBeerDTO} from 'typescript/dto/CreateBeerDTO';
 import {GetBeersDTO} from 'typescript/dto/GetBeersDTO';
 import ApiData from 'typescript/interfaces/ApiData';
 import {Beer} from 'typescript/models/Beer';
@@ -6,7 +7,7 @@ import {Beer} from 'typescript/models/Beer';
 export const beersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getBeers: builder.query<ApiData<Beer[]>, GetBeersDTO>({
-      query: (body) => `/beers?page=${body.page}&per_page=${body.perPage}&filter[query_array]=${body.name || ''}`,
+      query: (dto) => `/beers?page=${dto.page}&per_page=${dto.perPage}&filter[query_array]=${dto.name || ''}`,
       // eslint-disable-next-line no-console
       transformResponse: (response: ApiData<Beer[]>) => {
         const {included} = response;
@@ -31,7 +32,14 @@ export const beersApiSlice = apiSlice.injectEndpoints({
       // },
       keepUnusedDataFor: 0, // research more
     }),
+    addBeer: builder.mutation({
+      query: (dto: CreateBeerDTO) => ({
+        url: '/beers',
+        method: 'POST',
+        body: {beer: dto},
+      }),
+    }),
   }),
 });
 
-export const {useGetBeersQuery} = beersApiSlice;
+export const {useGetBeersQuery, useAddBeerMutation} = beersApiSlice;
