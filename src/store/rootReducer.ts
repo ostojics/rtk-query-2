@@ -1,8 +1,7 @@
 import {connectRouter} from 'connected-react-router';
+import appReducer from 'features/app/appSlice';
+import modalReducer from 'features/modal/modalSlice';
 import {History} from 'history';
-import appReducer from 'store/app/appSlice';
-
-import modalReducer from './modal/modalSlice';
 
 const rootReducer = (history: History) => {
   return {

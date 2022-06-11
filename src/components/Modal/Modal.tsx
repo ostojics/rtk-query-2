@@ -1,10 +1,10 @@
 import {ModalComponents} from 'constants/Modals';
 
 import Backdrop from 'components/Backdrop/Backdrop';
+import {setModalAC} from 'features/modal/modalSlice';
 import {useAppDispatch} from 'hooks/useAppDispatch';
 import {useAppSelector} from 'hooks/useAppSelector';
 import {createPortal} from 'react-dom';
-import {setModalAC} from 'store/modal/modalSlice';
 
 import './Modal.scss';
 import TestModal from './Modals/TestModal/TestModal';

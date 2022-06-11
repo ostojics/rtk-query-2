@@ -5,11 +5,11 @@ import {useState} from 'react';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import Text from 'components/Text/Text';
+import {setUserAC} from 'features/app/appSlice';
 import {useAppDispatch} from 'hooks/useAppDispatch';
 import LayoutNavbar from 'layouts/LayoutNavbar/LayoutNavbar';
 import {useHistory} from 'react-router';
 import './Login.scss';
-import {setUserAC} from 'store/app/appSlice';
 
 const Login = () => {
   const [username, setUsername] = useState('');

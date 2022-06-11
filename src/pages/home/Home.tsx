@@ -2,11 +2,11 @@ import {ModalComponents} from 'constants/Modals';
 
 import Button from 'components/Button/Button';
 import Text from 'components/Text/Text';
+import {getUserByIdACS} from 'features/app/requestAC';
+import {setModalAC} from 'features/modal/modalSlice';
 import {useAppDispatch} from 'hooks/useAppDispatch';
 import {useAppSelector} from 'hooks/useAppSelector';
 import LayoutNavbar from 'layouts/LayoutNavbar/LayoutNavbar';
-import {getUserByIdACS} from 'store/app/requestAC';
-import {setModalAC} from 'store/modal/modalSlice';
 
 import './Home.scss';
 

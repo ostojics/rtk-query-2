@@ -1,8 +1,8 @@
 import {AxiosResponse} from 'axios';
 import {call, put} from 'redux-saga/effects';
 import {getUserById} from 'services/user';
-import {setUserAC} from 'store/app/appSlice';
 
+import {setUserAC} from '../appSlice';
 import {getUserByIdACS} from '../requestAC';
 
 export function* getUserSaga(action: ReturnType<typeof getUserByIdACS>) {

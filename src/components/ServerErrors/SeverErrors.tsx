@@ -1,9 +1,9 @@
 import {useEffect} from 'react';
 
 import Notification from 'components/Notification/Notification';
+import {setServerErrorAC} from 'features/app/appSlice';
 import {useAppDispatch} from 'hooks/useAppDispatch';
 import {useAppSelector} from 'hooks/useAppSelector';
-import {setServerErrorAC} from 'store/app/appSlice';
 
 export default function ServerError() {
   const dispatch = useAppDispatch();
