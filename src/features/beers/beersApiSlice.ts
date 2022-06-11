@@ -1,3 +1,4 @@
+import {TagDescription} from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 import {apiSlice} from 'features/api/apiSlice';
 import {CreateBeerDTO} from 'typescript/dto/CreateBeerDTO';
 import {GetBeersDTO} from 'typescript/dto/GetBeersDTO';
@@ -20,16 +21,16 @@ export const beersApiSlice = apiSlice.injectEndpoints({
 
         return response;
       },
-      // providesTags: (result) => {
-      //   const tagArray: TagDescription<'Beer'>[] = [{type: 'Beer', id: 'LIST'}];
+      providesTags: (result) => {
+        const tagArray: TagDescription<'Beer'>[] = [{type: 'Beer', id: 'LIST'}];
 
-      //   if (result) {
-      //     const beersTags: TagDescription<'Beer'>[] = result.data.map((beer) => ({type: 'Beer', id: beer.id}));
-      //     return tagArray.concat(beersTags);
-      //   }
+        if (result) {
+          const beersTags: TagDescription<'Beer'>[] = result.data.map((beer) => ({type: 'Beer', id: beer.id}));
+          return tagArray.concat(beersTags);
+        }
 
-      //   return tagArray;
-      // },
+        return tagArray;
+      },
       keepUnusedDataFor: 0, // research more
     }),
     addBeer: builder.mutation({
