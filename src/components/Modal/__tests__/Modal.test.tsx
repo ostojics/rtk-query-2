@@ -1,8 +1,8 @@
 import {ModalComponents} from 'constants/Modals';
 
 import {render, screen, fireEvent} from '@testing-library/react';
+import {setModalAC} from 'features/modal/modalSlice';
 import {Provider} from 'react-redux';
-import {setModalAC} from 'store/modal/modalSlice';
 
 import store from '../../../store/store';
 import Modal from '../Modal';

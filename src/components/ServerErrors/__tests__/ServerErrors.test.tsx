@@ -1,7 +1,7 @@
 import {render, screen} from '@testing-library/react';
+import {setServerErrorAC} from 'features/app/appSlice';
 import {Provider} from 'react-redux';
 import '@testing-library/jest-dom/extend-expect';
-import {setServerErrorAC} from 'store/app/appSlice';
 
 import store from '../../../store/store';
 import ServerError from '../SeverErrors';
