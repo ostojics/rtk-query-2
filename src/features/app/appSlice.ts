@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {authApiSlice} from 'features/auth/authApiSlice';
 import {User} from 'typescript/models/User';
 
 export interface IState {
@@ -24,6 +25,13 @@ const appSlice = createSlice({
     setServerErrorAC: (state, action: PayloadAction<IState['serverError']>) => {
       state.serverError = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(authApiSlice.endpoints.signIn.matchFulfilled, (state, {payload: {user, token}}) => {
+      state.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
+      if (token) localStorage.setItem('token', JSON.stringify(token));
+    });
   },
 });
 
