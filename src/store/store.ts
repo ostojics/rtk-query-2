@@ -1,5 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {routerMiddleware} from 'connected-react-router';
+import {apiSlice} from 'features/api/apiSlice';
 import createSagaMiddleware from 'redux-saga';
 import {history} from 'utils/history/history';
 
@@ -10,7 +11,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: rootReducer(history),
-  middleware: [sagaMiddleware, routerMiddleware(history)],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat([sagaMiddleware, routerMiddleware(history), apiSlice.middleware]),
 });
 
 sagaMiddleware.run(rootSaga);
