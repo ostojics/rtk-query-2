@@ -1,0 +1,70 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["plugin:react/recommended", "react-app", "react-app/jest", "airbnb", "airbnb-typescript", "airbnb/hooks"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/object-curly-spacing": "off",
+    "react/no-danger": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "no-console": "warn",
+    "prettier/prettier": "off",
+    "linebreak-style": "off",
+    "object-curly-newline": "off",
+    "default-case": "off",
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "implicit-arrow-linebreak": "off",
+    "arrow-body-style": "off",
+    "react/button-has-type": "off",
+    "no-unneeded-ternary": "off",
+    "max-len": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "jsx-a11y/interactive-supports-focus": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "prefer-const": "warn",
+    "no-plusplus": "warn",
+    "operator-assignment": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-trailing-spaces": "warn",
+    "react/require-default-props": "off",
+    "import/order": [
+      "warn",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
+}

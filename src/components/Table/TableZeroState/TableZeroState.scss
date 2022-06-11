@@ -1,0 +1,33 @@
+@import 'sass/exports/abstracts';
+
+.table {
+  &__zero-state {
+    text-align: center;
+    height: 80vh;
+
+    div {
+      margin-bottom: 170px;
+    }
+
+    svg {
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-weight: 700;
+      font-size: $text-16;
+      color: $gray-text;
+      margin-bottom: 10px;
+    }
+
+    @include media-breakpoint-down(lg) {
+      td {
+        width: 100vw;
+      }
+
+      div {
+        margin-top: 70px;
+      }
+    }
+  }
+}

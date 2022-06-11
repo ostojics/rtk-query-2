@@ -1,0 +1,16 @@
+@import '/src/sass/exports/abstracts';
+
+.btn {
+  color: green;
+  padding: 0.5rem 1rem;
+
+  &--primary {
+    background-color: purple;
+    color: white;
+    border-radius: 0.3125rem;
+  }
+
+  @include media-breakpoint-down(lg) {
+    color: blue;
+  }
+}
