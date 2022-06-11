@@ -27,8 +27,10 @@ const appSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(authApiSlice.endpoints.signIn.matchFulfilled, (state, {payload}) => {
-      state.user = payload;
+    builder.addMatcher(authApiSlice.endpoints.signIn.matchFulfilled, (state, {payload: {user, token}}) => {
+      state.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
+      if (token) localStorage.setItem('token', JSON.stringify(token));
     });
   },
 });
