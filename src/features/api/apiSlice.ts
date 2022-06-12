@@ -1,4 +1,9 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {Routes} from 'constants/routes';
+
+import {BaseQueryApi} from '@reduxjs/toolkit/dist/query/baseQueryTypes';
+import {createApi, FetchArgs, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {push} from 'connected-react-router';
+import {setServerErrorAC} from 'features/app/appSlice';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:3000',
@@ -13,25 +18,24 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-// const baseQueryWithLogout = async (args: string | FetchArgs, api: BaseQueryApi, extraOptions: object) => {
-//   const result = await baseQuery(args, api, extraOptions);
-//   // eslint-disable-next-line no-console
-//   console.log('status', result.error?.status);
+const baseQueryWithLogout = async (args: string | FetchArgs, api: BaseQueryApi, extraOptions: object) => {
+  const result = await baseQuery(args, api, extraOptions);
+  const {error} = result;
+  // eslint-disable-next-line no-console
+  console.log('error', error);
 
-//   if (result.error?.status === 401) {
-//     // eslint-disable-next-line no-console
-//     console.log('token expired');
+  if (error?.status === 401) {
+    localStorage.clear();
+    api.dispatch(push(Routes.LOGIN));
+    api.dispatch(setServerErrorAC('Unauthorized'));
+  }
 
-//     localStorage.clear();
-//     api.dispatch(push(Routes.LOGIN));
-//   }
-
-//   return result;
-// };
+  return result;
+};
 
 export const apiSlice = createApi({
   reducerPath: 'api',
   tagTypes: ['Beer'],
-  baseQuery,
+  baseQuery: baseQueryWithLogout,
   endpoints: () => ({}),
 });
