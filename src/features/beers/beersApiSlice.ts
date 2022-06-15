@@ -31,7 +31,7 @@ export const beersApiSlice = apiSlice.injectEndpoints({
 
         return tagArray;
       },
-      keepUnusedDataFor: 0, // research more
+      keepUnusedDataFor: 0,
     }),
     addBeer: builder.mutation({
       query: (dto: CreateBeerDTO) => ({
